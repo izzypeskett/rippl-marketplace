@@ -2,20 +2,17 @@
 <h1>RIPPL</h1>
 </nav>
 
-<% if current_user.is_agency %>
-  <p> Hello World </p>
+<% if user_signed_in? %>
+  <% if current_user.is_agency? == true %>
+    <%= link_to('Agency', agencies_path, ) %><br>
+    <% else %>
+    <p> You must be a volunteer </p><br>
+    <% end %><br>
+  <%= link_to( 'Logout', destroy_user_session_path, method: :delete) %>
 <% else %>
-  <p> Hello Volunteer </p>
+  <%= link_to('Sign up as an agency', new_agency_path, )%>
 <% end %>
 
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path) %>  
-  </li>
-<% end %>
+
 
 

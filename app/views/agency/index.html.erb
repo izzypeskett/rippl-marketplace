@@ -1,0 +1,9 @@
+<% @agencies.each do |agency| %>
+  <%= agency.name %>
+  <%= agency.description %>
+  <%= link_to 'Show', show_agency_path(agency)%>
+<% end %>
+
+<%= link_to('Create New Agency', new_agency_path, ) %>
+
+<%= link_to('Home', :root, )%>
