@@ -1,1 +1,21 @@
-<h1>Hello World</h1>
+<nav>
+<h1>RIPPL</h1>
+</nav>
+
+<% if current_user.is_agency %>
+  <p> Hello World </p>
+<% else %>
+  <p> Hello Volunteer </p>
+<% end %>
+
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path) %>  
+  </li>
+<% end %>
+
+
