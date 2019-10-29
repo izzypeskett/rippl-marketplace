@@ -8,7 +8,8 @@ class AgencyController < ApplicationController
   end
 
   def sign_up
-    store_location_for(:user, new_agency_path)
+    session[:path] = new_agency_path
+    # store_location_for(:user, new_agency_path)
     redirect_to new_user_registration_path
   end
 

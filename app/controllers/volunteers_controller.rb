@@ -1,9 +1,14 @@
 class VolunteersController < ApplicationController
-  before_action: :authenticate_user!
-  before_action: :is_user_volunteer
-  before_action: :set_volunteer, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!, except: [:sign_up]
+  before_action :is_user_volunteer, except: [:sign_up]
+  before_action :set_volunteer, only: [:edit, :update, :show, :destroy]
 
   def index
+  end
+
+  def sign_up
+    session[:path] = new_volunteer_path
+    redirect_to new_user_registration_path
   end
 
   def new
@@ -61,4 +66,6 @@ class VolunteersController < ApplicationController
     else @volunteer == nil
       redirect_to :root
   end
+end
+
 end

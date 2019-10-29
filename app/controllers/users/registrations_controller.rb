@@ -1,28 +1,35 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
-    
-    if stored_location_for(:user).include? "agency"
+    if session[:path].include? "agency"
+      # stored_location_for(:user).include? "agency"
       @is_agency = true 
     else
       @is_agency = false
     end
     super
-    # @user.agency = Agency.new
-    # @user.agency.address = Address.new
-
   end
 
   # POST /resource
   def create
-    @user.is_agency = @is_agency
     super
-
+    if session[:path].include? "agency"
+    @user.is_agency = true
+    agency = resource.agencies.build(name: params[:user][:agency][:name], description: params[:user][:agency][:description], address_id: params[:user][:agency][:address_attributes][:id])
+    # address = resource.agencies.last.address.build( number: params[:user][:agency][:address_attributes][:number], street: params[:user][:agency][:address_attributes][:street], city: params[:user][:agency][:address_attributes][:city], state: params[:user][:agency][:address_attributes][:state], postcode: params[:user][:agency][:address_attributes][:postcode])
+    agency.save
+    else
+      @user.is_agency = false
+      volunteer = resource.volunteer.build(name: params[:user][:volunteer][:name], photo: params[:user][:volunteer][:photo], age: params[:user][:volunteer][:age], gender: params[:user][:volunteer][:gender], resume: params[:user][:volunteer][:resume])
+      volunteer.save
+      byebug
+    end
+    @user.save
   end
 
   # GET /resource/edit
@@ -51,9 +58,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # protected
 
+  # def set_agency_user
+  #   @user.agencies.new(params[:user][:agency])
+  #   @user.agencies.address.new(params[:user][:agency][:address_attributes])
+  #   byebug
+  # end
+
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [agency_attributes:[:name, :description, address_attributes: [ :number, :street, :city, :state, :postcode]]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [agencies_attributes:[:id, :name, :description]][volunteers_attributes:[:name, :photo, :age, :gender, :resume]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

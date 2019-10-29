@@ -17,6 +17,17 @@ Rails.application.routes.draw do
   patch "/agency/:id", to: "agency#update"
   delete "/agency/:id", to: "agency#destroy"
   get "/agency/:id/edit", to: "agency#edit", as: "edit_agency"
+
+  # Volunteer routes
+  get "/volunteer", to: "volunteers#index", as: "volunteers"
+  get "/volunteer/sign_up", to: "volunteers#sign_up", as: "sign_up_volunteer"
+  post "/volunteer", to: "volunteers#create", as: "create_volunteer"
+  get "/volunteer/new", to: "volunteers#new", as: "new_volunteer"
+  get "/volunteer/:id", to: "volunteers#show", as: "show_volunteer"
+  put "/volunteer/:id", to: "volunteers#update"
+  patch "/volunteer/:id", to: "volunteers#update"
+  delete "/volunteer/:id", to: "volunteers#destroy"
+  get "/volunteer/:id/edit", to: "volunteers#edit", as: "edit_volunteer"
   
 
 end
