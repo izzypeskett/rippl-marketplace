@@ -12,8 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       @is_agency = false
     end
-    byebug
     super
+    # @user.agency = Agency.new
+    # @user.agency.address = Address.new
 
   end
 
@@ -51,9 +52,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [agency_attributes:[:name, :description, address_attributes: [ :number, :street, :city, :state, :postcode]]])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

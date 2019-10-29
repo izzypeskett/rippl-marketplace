@@ -21,6 +21,39 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
+
+      <%= f.fields_for :agency, Agency.new do |form| %>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div><br>
+      <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div><br>
+      <%= form.fields_for :address, Address.new do |ff| %>
+        <div>
+          <%= ff.label :number %>
+          <%= ff.number_field :number %>
+          </div><br>
+          <div>
+          <%= ff.label :street %>
+          <%= ff.text_field :street %>
+          </div><br>
+          <div>
+          <%= ff.label :city %>
+          <%= ff.text_field :city %>
+          </div><br>
+          <div>
+          <%= ff.label :state %>
+          <%= ff.text_field :state %>
+          </div><br>
+          <div>
+          <%= ff.label :postcode %>
+          <%= ff.number_field :postcode %>
+          </div><br>
+        <% end %>
+      <% end %>
     
     
 
