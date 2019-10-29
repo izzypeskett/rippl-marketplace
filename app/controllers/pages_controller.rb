@@ -4,5 +4,8 @@ class PagesController < ApplicationController
     @agencies = Agency.all
   end
 
+  def agency
+  end
+
 
 end

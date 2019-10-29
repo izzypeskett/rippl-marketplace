@@ -1,0 +1,47 @@
+<%= form_with model: @volunteer, local: true do |form| %>
+<!-- Print any form errors to user -->
+  <% if @volunteer.errors.any? %>
+    <div id= "error explanation ">
+    <ul>
+      <% @volunteer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+  <div>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  </div>
+
+  <div>
+  <%= form.label :photo %>
+  <%= form.file_field :photo %>
+  </div>
+
+  <div>
+  <%= form.label :age %>
+  <%= form.number_field :age %>
+  </div>
+
+  <div>
+  <%= form.label :gender %>
+  <%= form.select :gender, options_for_select( Volunteer.genders.keys, :selected => volunteer.gender ) %>
+  </div>
+
+  <div>
+  <%= form.label :resume %>
+  <%= form.file_field :resume %>
+  </div>
+
+  <div>
+  <%= form.submit %>
+  </div>
+
+<% end %>
+
+
+
+
+  

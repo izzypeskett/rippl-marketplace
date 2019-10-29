@@ -1,6 +1,17 @@
 <h1>Let's Set up an Agency.</h1>
 <div>
 <%= form_with model: @agency, local: true do | form | %>
+
+<% if @agency.errors.any? %>
+    <div id="error_explanation">
+        <ul>
+            <% @agency.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+    
 <div>
   <%= form.label :name %>
   <%= form.text_field :name %>

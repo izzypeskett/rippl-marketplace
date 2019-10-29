@@ -1,10 +1,15 @@
 class AgencyController < ApplicationController
-  before_action :authenticate_user!
-  before_action :is_user_agency
+  before_action :authenticate_user!, except: [:sign_up]
+  before_action :is_user_agency, except: [:sign_up]
   before_action :set_user_agency, only: [:edit, :update, :show, :destroy]
 
   def index
     @agencies = current_user.agencies.all
+  end
+
+  def sign_up
+    store_location_for(:user, new_agency_path)
+    redirect_to new_user_registration_path
   end
 
   def new
@@ -12,6 +17,8 @@ class AgencyController < ApplicationController
   end
 
   def create
+    current_user.is_agency = true
+    current_user.save
     @agency = current_user.agencies.create( agency_params )
     if @agency.save!
     redirect_to show_agency_path(@agency)
