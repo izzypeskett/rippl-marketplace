@@ -84,34 +84,6 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
-    
-    <%= f.fields_for :volunteer, Volunteer.new do |form| %>
-
-      <div>
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-      </div>
-
-      <div>
-      <%= form.label :photo %>
-      <%= form.file_field :photo %>
-      </div>
-
-      <div>
-      <%= form.label :age %>
-      <%= form.number_field :age %>
-      </div>
-
-      <div>
-      <%= form.label :gender %>
-      <%= form.select :gender, options_for_select( Volunteer.genders.keys) %>
-      </div>
-
-      <div>
-      <%= form.label :resume %>
-      <%= form.file_field :resume %>
-      </div>
-    <% end %>
 
   <div class="actions">
   <%= f.submit %>

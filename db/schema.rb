@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_224247) do
+ActiveRecord::Schema.define(version: 2019_10_31_054510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,59 @@ ActiveRecord::Schema.define(version: 2019_10_28_224247) do
     t.index ["user_id"], name: "index_agencies_on_user_id"
   end
 
+  create_table "listing_outcomes", force: :cascade do |t|
+    t.string "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "listing_volunteers", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.bigint "volunteer_id"
+    t.bigint "listing_outcome_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_listing_volunteers_on_listing_id"
+    t.index ["listing_outcome_id"], name: "index_listing_volunteers_on_listing_outcome_id"
+    t.index ["volunteer_id"], name: "index_listing_volunteers_on_volunteer_id"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.text "title"
+    t.bigint "address_id"
+    t.string "time_frame"
+    t.integer "no_of_volunteers"
+    t.bigint "agency_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "time_required"
+    t.text "description"
+    t.index ["address_id"], name: "index_listings_on_address_id"
+    t.index ["agency_id"], name: "index_listings_on_agency_id"
+  end
+
+  create_table "listings_skills", id: false, force: :cascade do |t|
+    t.bigint "listing_id", null: false
+    t.bigint "skill_id", null: false
+    t.index ["listing_id", "skill_id"], name: "index_listings_skills_on_listing_id_and_skill_id"
+    t.index ["skill_id", "listing_id"], name: "index_listings_skills_on_skill_id_and_listing_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "symbol"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills_volunteers", id: false, force: :cascade do |t|
+    t.bigint "volunteer_id", null: false
+    t.bigint "skill_id", null: false
+    t.index ["skill_id", "volunteer_id"], name: "index_skills_volunteers_on_skill_id_and_volunteer_id"
+    t.index ["volunteer_id", "skill_id"], name: "index_skills_volunteers_on_volunteer_id_and_skill_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -85,5 +138,10 @@ ActiveRecord::Schema.define(version: 2019_10_28_224247) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "agencies", "addresses"
   add_foreign_key "agencies", "users"
+  add_foreign_key "listing_volunteers", "listing_outcomes"
+  add_foreign_key "listing_volunteers", "listings"
+  add_foreign_key "listing_volunteers", "volunteers"
+  add_foreign_key "listings", "addresses"
+  add_foreign_key "listings", "agencies"
   add_foreign_key "volunteers", "users"
 end

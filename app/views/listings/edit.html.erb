@@ -1,0 +1,44 @@
+<h1>Edit a wave</h1>
+<%= form_with model: @listing, local: true do | form | %>
+
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+        <ul>
+            <% @listing.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+  
+  <div>
+    <%= form.label "Let's create a catchy name for your wave listing" %>
+      <sub>i.e. Passionate Customer Services Officer for <%= @agency.name %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label "What is the minimum amount of time you would require the volunteer?" %>
+    <%= form.select :time_frame, ['less than 3 months', '3 months', '6 months', '12 months'] %>
+  </div>
+
+  <div>
+    <%= form.label "And how often would you like your volunteer, to well..volunteer?" %>
+    <%= form.select :time_required, ['weekly', 'fortnightly', 'monthly', 'occasional']%>
+  </div>
+
+  <div>
+    <%= form.label "How many volunteers does this wave require?" %>
+    <%= form.integer :no_of_volunteers %>
+  </div>
+
+  <p> Great! Let's Create your wave!</p>
+
+  <%= form.submit %>
+
+  <% end %>

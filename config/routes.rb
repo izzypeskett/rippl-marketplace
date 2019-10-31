@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   patch "/volunteer/:id", to: "volunteers#update"
   delete "/volunteer/:id", to: "volunteers#destroy"
   get "/volunteer/:id/edit", to: "volunteers#edit", as: "edit_volunteer"
+
+  resources :listings
+
+  get "/listings/:id/apply", to: "listings#apply", as: "apply_listing"
   
 
 end

@@ -1,10 +1,22 @@
+<div class="hero-banner">
 <nav>
-<h1>RIPPL</h1>
+  <h1>RIPPL</h1>
+  <div class="login">
+  <%=link_to('Login', new_user_session_path, )%>
+  </div>
 </nav>
 
+
+</div>
+
+<div class="main">
 <% if user_signed_in? %>
   <% if current_user.is_agency? == true %>
+
+  <div class="agency-card">
     <%= link_to('Agency', agencies_path, ) %><br>
+  </div>
+  
     <% else %>
     <p> You must be a volunteer </p><br>
     <% end %><br>
@@ -13,6 +25,7 @@
   <%= link_to('Sign up as an agency', sign_up_agency_path, )%>
   <%= link_to('Sign up as a volunteer', sign_up_volunteer_path, ) %>
 <% end %>
+</div>
 
 
 

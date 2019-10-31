@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  address: one
+  time_frame: 2019-10-30
+  no_of_volunteers: 1
+  skills: one
+  agency: one
+
+two:
+  title: MyText
+  address: two
+  time_frame: 2019-10-30
+  no_of_volunteers: 1
+  skills: two
+  agency: two

@@ -1,0 +1,16 @@
+<h1>Hi Volunteer!</h1>
+<%= @volunteer.name %><br>
+<%= @volunteer.age %>
+<div>
+<%= link_to('See available waves', listings_path) %>
+</div>
+
+<div>
+<h2> Waves applied for </h2>
+<% @volunteer.listing_volunteers.each do |lv| %>
+  <%= lv.listing.title %>
+  <%= lv.listing.agency.name %>
+  <%= lv.listing.description %>
+  <%= lv.listing_outcome.result%>
+  <% end %>
+</div>

@@ -27,8 +27,17 @@
 
   <div>
   <%= form.label :gender %>
-  <%= form.select :gender, options_for_select( Volunteer.genders.keys, :selected => volunteer.gender ) %>
+  <%= form.select :gender, options_for_select( Volunteer.genders.keys, :selected => @volunteer.gender ) %>
   </div>
+
+  <div>
+  <%= form.label :skills %>
+  <% for skill in Skill.all %>
+    <%= check_box_tag "volunteer[skill_ids][]", skill.id %>
+    <%=h skill.name %>
+  <% end %>
+  </div>
+
 
   <div>
   <%= form.label :resume %>

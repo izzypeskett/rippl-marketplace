@@ -1,0 +1,56 @@
+<h1>Create a wave</h1>
+<%= form_with model: @listing, local: true do | form | %>
+
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+        <ul>
+            <% @listing.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+  
+  <div>
+    <%= form.label "Let's create a catchy name for your wave listing" %>
+      <sub>i.e. Passionate Customer Services Officer for <%= current_user.agencies.name %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label "What is the minimum amount of time you would require the volunteer?" %>
+    <%= form.select :time_frame, ['less than 3 months', '3 months', '6 months', '12 months'] %>
+  </div>
+
+  <div>
+    <%= form.label "And how often would you like your volunteer, to well..volunteer?" %>
+    <%= form.select :time_required, ['weekly', 'fortnightly', 'monthly', 'occasional']%>
+  </div>
+
+  <div>
+    <%= form.label "How many volunteers does this wave require?" %>
+    <%= form.number_field :no_of_volunteers %>
+  </div>
+
+  <div>
+    <%= form.label "What skills would you like your volunteer to have?" %>
+      <% for skill in Skill.all %>
+      <%= check_box_tag "listing[skill_ids][]", skill.id %>
+     <%=h skill.name %>
+    <% end %>
+  </div>
+
+  <p> Great! Let's Create your wave!</p>
+
+  <%= form.submit %>
+
+  <% end %>
+
+
+
+    

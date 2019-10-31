@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+# def seed_image(file_name)
+#   File.open(File.join(Rails.root, "/app/assets/images/seed/#{file_name}.jpg"))
+# end
+
+# Skill.create(name: "driver", description:"Has current Australian drivers license")
+# 5.times do 
+#   Skill.create(name: Faker::Job.key_skill)
+# end
+
+ListingOutcome.create(result:"Approved")
+ListingOutcome.create(result:"Denied")
+ListingOutcome.create(result:"Applied")
+ListingOutcome.create(result:"Being Assessed")

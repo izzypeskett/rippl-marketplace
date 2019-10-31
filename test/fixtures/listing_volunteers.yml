@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  listing: one
+  volunteer: one
+  listing_outcome: one
+
+two:
+  listing: two
+  volunteer: two
+  listing_outcome: two

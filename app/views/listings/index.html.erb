@@ -1,0 +1,9 @@
+<h1> Active Waves</h1>
+<% @listings.each do |listing| %>
+  <div>
+    <%= listing.title %><br>
+    <%= listing.description %><br>
+    <%= listing.no_of_volunteers %><br>
+    <%= link_to("View", listing_path(listing)) %>
+  </div>
+  <% end %>

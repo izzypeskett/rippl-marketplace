@@ -50,7 +50,7 @@ class VolunteersController < ApplicationController
   private
 
   def volunteer_params
-    params.require(:volunteer).permit(:name, :photo, :age, :gender, :resume)
+    params.require(:volunteer).permit(:name, :photo, :age, :gender, :resume, skill_ids: [])
   end
 
   def is_user_volunteer
@@ -64,7 +64,7 @@ class VolunteersController < ApplicationController
     if current_user.is_agency? == false
       @volunteer = current_user.volunteers.find_by_id(id)
     else @volunteer == nil
-      redirect_to :root
+      redirect_to new_volunteer_path
   end
 end
 
