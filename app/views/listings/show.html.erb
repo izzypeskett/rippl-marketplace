@@ -1,7 +1,10 @@
+<%= render 'navbar'%>
 <h1>Wave:</h1>
 <%= @listing.title %>
 <%= @listing.description %>
 <p> posted by <%=@listing.agency.name %>
 
+<% if policy(@listing).apply? %>
+  <%= link_to "Apply", apply_listing_path %>
+<% end %>
 
-<%= link_to "Apply", apply_listing_path %>

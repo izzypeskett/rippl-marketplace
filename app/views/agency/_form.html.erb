@@ -1,6 +1,6 @@
-<h1>Let's Set up an Agency.</h1>
+<h1>Edit Agency.</h1>
 <div>
-<%= form_with model: @agency, local: true do | form | %>
+<%= form_with model: @agency, url: update_agency_path, local: true do | form | %>
 
 <% if @agency.errors.any? %>
     <div id="error_explanation">

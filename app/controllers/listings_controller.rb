@@ -27,18 +27,20 @@ class ListingsController < ApplicationController
       if current_user.is_agency == false
         @volunteer = current_user.volunteers.first
       else
+        @agency = current_user.agencies.first
       end
     end
   end
 
   def edit
     @listing = Listing.find(params[:id])
+    authorize @listing
   end
 
   def apply
-    byebug
     id = params[:id]
     @listing = Listing.find_by_id(id)
+    authorize @listing
     @volunteer = current_user.volunteers.first
     ListingVolunteer.create(listing_id: @listing.id, volunteer_id: @volunteer.id, listing_outcome_id:3)
   end

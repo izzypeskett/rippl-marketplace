@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   post "/agency", to: "agency#create", as: "create_agency"
   get "/agency/new", to: "agency#new", as: "new_agency"
   get "/agency/:id", to: "agency#show", as: "show_agency"
-  put "/agency/:id", to: "agency#update"
+  get "/agency/:id/edit", to: "agency#edit", as: "edit_agency"
+  put "/agency/:id", to: "agency#update", as: "update_agency"
   patch "/agency/:id", to: "agency#update"
   delete "/agency/:id", to: "agency#destroy"
-  get "/agency/:id/edit", to: "agency#edit", as: "edit_agency"
+  
 
   # Volunteer routes
   get "/volunteer", to: "volunteers#index", as: "volunteers"

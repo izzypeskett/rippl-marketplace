@@ -18,9 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     if session[:path].include? "agency"
-    @user.is_agency = true
-    agency = resource.agencies.build(name: params[:user][:agency][:name], description: params[:user][:agency][:description])
-    agency.save
+      @user.is_agency = true
     else
       @user.is_agency = false
     end
@@ -67,10 +65,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    
-    id = resource.id
-    if resource.is_agency == true
-      agency = Agency.find_by_user_id(id)
+    if session[:path].include? "agency"
+      # agency is being required to be available for the routing. 
+      agency = resource.agencies.build(name: params[:user][:agency][:name], description: params[:user][:agency][:description])
+      agency.save
       show_agency_path(agency)
     else
       new_volunteer_path

@@ -1,15 +1,40 @@
+<div class="main">
+
 <div class="hero-banner">
-<nav>
+  <nav>
   <h1>RIPPL</h1>
   <div class="login">
   <%=link_to('Login', new_user_session_path, )%>
   </div>
-</nav>
+  </nav>
+  <header>
+  <h1>Welcome to Rippl,</h1>
+  <h4>where one volunteer can create a ripple effect.</h4>
+  </header>
+  <div class="search-bar">
+  </div>
+</div>
 
+<div class="listings">
+<h1> Waves waiting to be caught.</h1>
+  <% @listings.each do |listing| %>
+  <div class="listing-card">
+    <div class="listing-card-left">
+    <i class="fas fa-water"></i>
+    <%= listing.title %><br>
+    <p>Created by:<%= listing.agency.name %></p>
+    <%= link_to("See this wave", listing_path(listing))%>
+    </div>
+    <div class="listing-card-right">
+    <%= listing.time_frame %><br>
+    <i class="fas fa-users"> <%= listing.no_of_volunteers %></i>
+    </div>
+  </div>
+  <% end %>
 
 </div>
 
-<div class="main">
+<div class="main-cards">
 <% if user_signed_in? %>
   <% if current_user.is_agency? == true %>
 
@@ -25,6 +50,7 @@
   <%= link_to('Sign up as an agency', sign_up_agency_path, )%>
   <%= link_to('Sign up as a volunteer', sign_up_volunteer_path, ) %>
 <% end %>
+</div>
 </div>
 
 
