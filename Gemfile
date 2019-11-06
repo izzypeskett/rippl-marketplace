@@ -72,3 +72,5 @@ gem "aws-sdk-s3", "~> 1.51"
 gem "pundit", "~> 2.1"
 
 gem "faker", "~> 2.6"
+
+gem "social-share-button", "~> 1.2"

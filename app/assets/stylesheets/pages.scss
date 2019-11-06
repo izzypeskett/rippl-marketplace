@@ -6,89 +6,143 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-}
-.notice {
-  display: none;
+  background-color: #fcfcfc;
 }
 
-.alert {
-  display: none;
-}
-
-nav {
-  margin: 0px;
-  width: 100vw;
-  height: 80px;
+.main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  align-self: flex-start;
-}
-
-nav .login {
-  padding-right: 20px;
-}
-
-nav h1 {
-  padding-left: 20px;
-  color: white;
-}
-
-.login a {
-  color: white;
-  text-decoration: none;
+  flex-wrap: wrap;
+  
 }
 
 .hero-banner {
-  width: 100vw;
+  width: calc(100vw - 100px);
   height: 400px;
-  background-image: url('wave.jpg');
+  background-color: ffe6d3;
+  background-image: url('background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  border-radius: 25px;
+}
+
+header {
+  margin-left: 100px;
+  letter-spacing: 2px;
+  h1 {
+    font-weight: lighter;
+  }
+  h4 {
+    font-weight: lighter;
+  }
 }
 
 .listings {
+  width: 100%;
+  height: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+  font-family: 'Work Sans', sans-serif;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-bottom: 40px;
+  h2 {
+    font-weight: lighter;
+    letter-spacing: 2px;
+    margin-right: 500px;
+  }
+  .listing-card {
+    width: calc(100% - 100px);
+    height: 120px;
+    border-radius: 25px;
+    padding: 10px;
+    align-self: center;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    box-shadow: 0px 7px 14px -2px rgba(138,160,173,0.38);
+
+    .listing-card-left {
+      margin-left: 20px;
+    }
+
+    .main-button {
+      height: 100%;
+      width: 20%;
+      background-color: #ffe2d3;
+      border-radius: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-button a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #title {
+      letter-spacing: 2px;
+    }
+
+    #subtitle {
+      font-size: 14px;
+      color: grey;
+    }
+  } 
 }
 
-.listing-card {
-  width: 600px;
-  height: 80px;
-  border: 1px navy solid;
-  border-radius: 25px;
-  padding: 10px;
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
-  box-shadow: 0px 11px 17px -4px rgba(138,139,168,1);
-}
+
 
 .main-cards {
-  width:100vw;
-  height:calc(100vh - 400px);
+  margin-top: 40px;
+  width:calc(100vw - 100px);
+  height:auto;
   display:flex;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #ecf8ff;
+  border-radius: 25px;
 }
 
-.agency-card {
-  width: 200px;
-  height: 300px;
-  border: 1px black solid;
+.main-card {
+  width: 350px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  border-radius: 25px;
+  .sign-up-button {
+    height: 20%;
+    width: 75%;
+    background-color: #ffe2d3;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .sign-up-button a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
+
+
 
 

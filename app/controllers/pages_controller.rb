@@ -1,10 +1,14 @@
 class PagesController < ApplicationController
 
   def home
-    @agencies = Agency.all
-    @listings = Listing.all
+    @listings = Listing.last(5).reverse
+    if user_signed_in?
+      if current_user.is_agency == true
+        @agency = current_user.agencies.first
+      else
+        @volunteer = current_user.volunteers.first
+      end
+    end
   end
 
-  def agency
-  end
 end

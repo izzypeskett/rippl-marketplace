@@ -12,4 +12,63 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
+
+
+
+ body {
+   font-family: 'Work Sans', sans-serif;
+   margin-left: 50px;
+   margin-right: 50px;
+   
+ }
+
+ nav {
+  margin: 0px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: flex-start;
+  letter-spacing: 2px;
+}
+
+nav .login {
+  padding-right: 20px;
+}
+
+.login ul {
+  text-align: center;
+}
+
+.login ul li {
+  display: inline-block;
+}
+
+nav h1 {
+  padding-left: 20px;
+  font-weight: lighter;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+nav a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.login a {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: lighter;
+  color: inherit;
+  text-decoration: none;
+}
+
+.login a:hover {
+  text-decoration: underline orange;
+}

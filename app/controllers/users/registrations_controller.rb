@@ -19,6 +19,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     if session[:path].include? "agency"
       @user.is_agency = true
+      agency = resource.agencies.build(name: params[:user][:agency][:name], description: params[:user][:agency][:description])
+      agency.save
+      show_agency_path(agency)
     else
       @user.is_agency = false
     end
@@ -55,7 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [agency_attributes:[ :id, :name, :description]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [agency_attributes:[ :name, :description]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

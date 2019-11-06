@@ -8,11 +8,32 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/4eb9ec9187.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
   </head>
+    <nav>
+
+      <h1><%= link_to "RIPPL", :root %></h1>
+      
+      <div class="login">
+      <ul>
+      <% if user_signed_in? %>
+        <% if current_user.is_agency? == true %>
+          <li><p>Hi <%=@agency.name%></p><li>
+          <li><%=link_to('Dashboard', show_agency_path(@agency))%></li>
+        <% else %>
+          <% if current_user.volunteers.count > 0 %>
+          <li><p>Hi <%=@volunteer.name%><p></li>
+            <% end %>
+        <% end %>
+        <li><%=link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+      <% else %>
+        <li><%=link_to('Login', new_user_session_path, )%></li>
+        <li><%=link_to('Sign up', sign_up_volunteer_path)%></li>
+      <% end %>
+      </div>
+  </nav>
 
   <body>
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

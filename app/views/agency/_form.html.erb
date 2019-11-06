@@ -1,4 +1,6 @@
-<h1>Edit Agency.</h1>
+<h1>Hey, <%=@agency.name %></h1>
+<% if @agency.address == nil %>
+<%= link_to "Add an address", "#{edit_agency_path}#address-form" %>
 <div>
 <%= form_with model: @agency, url: update_agency_path, local: true do | form | %>
 
@@ -21,7 +23,7 @@
   <%= form.label :description %>
   <%= form.text_area :description %>
 </div><br>
- <div>
+ <div id="address-form">
 <!-- Start of address form -->
       <%= form.label :address_id %>
       <%= form.fields_for :address, Address.new do |ff| %>
@@ -39,7 +41,8 @@
         </div><br>
          <div>
         <%= ff.label :state %>
-        <%= ff.text_field :state %>
+        <%= ff.select :state,
+        options_for_select(Address.state, @address.state) %>
         </div><br>
          <div>
         <%= ff.label :postcode %>

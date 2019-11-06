@@ -1,9 +1,39 @@
-<h1> Active Waves</h1>
+<div class="main">
+
+<div class= "head-block">
+  <h1> Active Waves</h1>
+</div>
+
+<div class ="listings">
 <% @listings.each do |listing| %>
-  <div>
-    <%= listing.title %><br>
-    <%= listing.description %><br>
-    <%= listing.no_of_volunteers %><br>
+  <div class ="listing-card">
+    <div class="listing-card-left">
+      <p id="title"><%= listing.title %></p>
+      <p id="subtitle"><%= listing.agency.name %></p>
+      <p id="subtitle"><%= listing.time_frame %></p>
+      <p id="subtitle"><i class="fas fa-users"> <%= listing.no_of_volunteers %></i></p>
+    </div>
+    <div class="main-button">
     <%= link_to("View", listing_path(listing)) %>
-  </div>
+    </div>
   <% end %>
+  </div>
+</div>
+<div class="listings">
+  <h1> See who's surfing! </h1>
+  <% @volunteers.each do |volunteer| %>
+    <div class="listing-card">
+      <%if volunteer.listings.count > 0  %>
+      <p id="title"><%= volunteer.name %></p>
+      <p id="subtitle">is surfing:<p>
+      <% volunteer.listings.each do |vl|%>
+        <%= vl.title %>
+        <p id="subtitle"><%= vl.agency.name %></p>
+        <p>Join them!</p><%= link_to("View Wave", listing_path(vl))%>
+        <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
+
+</div>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :agencies
   accepts_nested_attributes_for :agencies
+  validates_associated :agencies
   has_many :volunteers
   accepts_nested_attributes_for :volunteers
 end

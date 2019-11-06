@@ -1,19 +1,28 @@
 // Place all the styles related to the Agency controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.agency-dashboard {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 200px auto 200px;
-  grid-template-rows: 1;
+
+#agency.hero-banner {
+  height: 300px;
 }
 
-.dashboard-main {
+#agency.listings {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-left: solid 1px navy;
-  border-right: solid 1px navy;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#agency.listings h2 {
+  font-weight: lighter;
+  font-stretch: wider;
+}
+
+.agency-listing {
+  border: 1px solid black;
+  border-radius: 25px;
+  height: 150px;
+  width: 250px;
+  margin-right: 10px;
 }

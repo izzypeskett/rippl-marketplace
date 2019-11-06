@@ -4,10 +4,20 @@ class ListingsController < ApplicationController
   
   def index
     @listings = Listing.all
+    @volunteers = Volunteer.all
+    # Do I need this code?  
+    if user_signed_in?
+      if current_user.is_agency? == true 
+        @agency = current_user.agencies.first
+      else
+        @volunteer = current_user.volunteers.first
+      end
+    end
   end
 
   def new
     @listing = Listing.new
+    authorize @listing
   end
 
   def create
@@ -23,6 +33,8 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    # To allow user to apply for listing if they are a volunteer
+    # To reveal 'toolbox' if current user is an agency and own the listing
     if user_signed_in?
       if current_user.is_agency == false
         @volunteer = current_user.volunteers.first
@@ -36,7 +48,8 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     authorize @listing
   end
-
+# Method that connects volunteer to a listing through a join table
+# By clicking the link_to in the views/listing/show
   def apply
     id = params[:id]
     @listing = Listing.find_by_id(id)

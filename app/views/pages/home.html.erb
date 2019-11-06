@@ -1,57 +1,50 @@
 <div class="main">
-
-<div class="hero-banner">
-  <nav>
-  <h1>RIPPL</h1>
-  <div class="login">
-  <%=link_to('Login', new_user_session_path, )%>
-  </div>
-  </nav>
-  <header>
-  <h1>Welcome to Rippl,</h1>
-  <h4>where one volunteer can create a ripple effect.</h4>
-  </header>
-  <div class="search-bar">
-  </div>
-</div>
-
-<div class="listings">
-<h1> Waves waiting to be caught.</h1>
-  <% @listings.each do |listing| %>
-  <div class="listing-card">
-    <div class="listing-card-left">
-    <i class="fas fa-water"></i>
-    <%= listing.title %><br>
-    <p>Created by:<%= listing.agency.name %></p>
-    <%= link_to("See this wave", listing_path(listing))%>
-    </div>
-    <div class="listing-card-right">
-    <%= listing.time_frame %><br>
-    <i class="fas fa-users"> <%= listing.no_of_volunteers %></i>
+  <div class="hero-banner">
+    <header>
+    <h1>Welcome to RIPPL,</h1>
+    <h4>where one volunteer can create a ripple effect.</h4>
+    </header>
+    <div class="search-bar">
     </div>
   </div>
-  <% end %>
 
-</div>
-
-<div class="main-cards">
-<% if user_signed_in? %>
-  <% if current_user.is_agency? == true %>
-
-  <div class="agency-card">
-    <%= link_to('Agency', agencies_path, ) %><br>
+   
+  <div class="listings">
+     <h2> Waves to catch</h2>
+    <% @listings.each do |listing| %>
+    <div class="listing-card">
+      <div class="listing-card-left">
+        <p id="title"><%= listing.title %></p>
+        <p id="subtitle"><%= listing.agency.name %></p>
+        <p id="subtitle"><%= listing.time_frame %></p>
+       <p id="subtitle"><i class="fas fa-users"> <%= listing.no_of_volunteers %></i></p>
+      </div>
+      <div class="main-button">
+        
+       <%= link_to("View this wave", listing_path(listing))%>
+     </div>
+    </div>
+    <% end %>
+    <%= link_to("See all waves", listings_path) %>
   </div>
-  
-    <% else %>
-    <p> You must be a volunteer </p><br>
-    <% end %><br>
-  <%= link_to( 'Logout', destroy_user_session_path, method: :delete) %>
-<% else %>
-  <%= link_to('Sign up as an agency', sign_up_agency_path, )%>
-  <%= link_to('Sign up as a volunteer', sign_up_volunteer_path, ) %>
-<% end %>
+
+  <div class="main-cards">
+    <div class="main-card">
+      <p>Looking for volunteers?</p>
+
+      <div class="sign-up-button">
+        <%=link_to('Sign Up As An Agency', sign_up_agency_path)%>
+      </div>
+    </div>
+
+    <div class="main-card">
+      <p>Wanting to volunteer?</p>
+      <div class="sign-up-button">
+        <%=link_to('Sign Up As A Volunteer', sign_up_volunteer_path)%>
+        </div>
+    </div>
 </div>
-</div>
+
 
 
 

@@ -1,3 +1,89 @@
 // Place all the styles related to the Listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.head-block {
+  width: calc(100vw - 100px);
+  height: 260px;
+  background-color: #ecf8ff;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-weight: lighter;
+    letter-spacing: 2px;
+
+  }
+}
+
+.show-listing {
+  height: 100vh;
+  width: calc(100vw - 100px);
+  padding: 50px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 400px auto;
+
+  a {
+    grid-row: 1;
+    grid-column: 2;
+    text-decoration: none;
+    color: black;
+  }
+
+  .listing-information {
+    margin-top: 20px;
+    margin-left: 40px;
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .listing-information h1 {
+    font-weight: lighter;
+    letter-spacing: 2px;
+  }
+
+  #heading {
+    background-color: #ffe2d3;
+    padding: 5px;
+    width: 200px;
+    border-radius: 25px;
+  }
+
+  .social-share-button {
+    .ssb-icon {
+      background-size: 24px;
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  #subtitle {
+    font-size: 14px;
+    color: grey;
+  }
+
+  .agency-name {
+    letter-spacing: 2px;
+  }
+
+  .actions {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 80px;
+
+    .button {
+      height: 40px;
+      width: 120px;
+      border-radius: 25px;
+      border: 2px #ffe2d3 solid;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

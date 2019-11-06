@@ -3,13 +3,15 @@ class AgencyController < ApplicationController
   before_action :is_user_agency, except: [:sign_up]
   before_action :set_user_agency, only: [:edit, :update, :show, :destroy]
 
+  # Do I need this code?
   def index
     @agencies = current_user.agencies.all
   end
 
   def sign_up
+    # Grabs the session path name to direct which
+    # sign up form needs to be rendered 
     session[:path] = new_agency_path
-    # store_location_for(:user, new_agency_path)
     redirect_to new_user_registration_path
   end
 
@@ -30,6 +32,7 @@ class AgencyController < ApplicationController
     id = params[:id]
     @agency = Agency.find(id)
   end
+
 
   def edit
     id = params[:id]

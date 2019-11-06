@@ -8,4 +8,7 @@ class Listing < ApplicationRecord
 
   has_many :listing_volunteers
   has_many :volunteers, through: :listing_volunteers
+
+  validates :title, presence: true, length: { in: 10..250 }
+  validates :description, presence: true, length: { maximum: 500, too_long: "%{count} characters is the maximum allowed" }
 end

@@ -1,10 +1,39 @@
-<%= render 'navbar'%>
-<h1>Wave:</h1>
-<%= @listing.title %>
-<%= @listing.description %>
-<p> posted by <%=@listing.agency.name %>
+<div class="show-listing">
 
-<% if policy(@listing).apply? %>
-  <%= link_to "Apply", apply_listing_path %>
-<% end %>
-
+  <div class="actions">
+    <% if policy(@listing).apply? %>
+      <div class ="button">
+      <%= link_to "Apply", apply_listing_path %>
+      </div>
+    <% end %>
+    <% if current_user.is_agency? == true %>
+      <% if policy(@listing).edit? %>
+        <div class = "button">
+        <%= link_to "Edit Wave", edit_listing_path %>
+        </div>
+     <% end %>
+    <% end %>
+  </div>
+  <%= link_to "Back", :back %>
+  <div class="listing-information">
+    <h1><%= @listing.title %></h1>
+      <p id="heading">What we are after:</p>
+      <p><%= @listing.description %></p>
+      <p id="heading">Minimum commitment:</p>
+      <p><%= @listing.time_frame %></p>
+      <p id="heading">Volunteer is required:</p>
+      <p><%= @listing.time_required %></p>
+      <p id="heading">Skills to have:<p>
+      <p id="subtitle">Although not essential</p>
+      <p><%= @listing.skills.name %></p>
+      <p id="heading"> Number of volunteers needed:</p>
+      <p><%= @listing.no_of_volunteers %></p>
+      <p id="subtitle">(Know of any good candidates?)</p>
+      <p>Share here<%= social_share_button_tag(@listing.title) %></p>
+      <p id="subtitle">This wave was created by</p>
+      <div class="agency-name">
+        <%=@listing.agency.name %>
+      </div>
+  </div>
+  
+</div>

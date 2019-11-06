@@ -1,0 +1,62 @@
+#sign-up-form {
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
+
+#waves-image {
+  height: 150px;
+  width: 200px;
+}
+
+.form {
+  margin-left: 40px;
+  width: 600px;
+}
+
+.field {
+  margin: 10px;
+}
+
+.field input {
+  margin: 10px;
+  width: 500px;
+  height: 40px;
+  border-radius: 40px;
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+.field textarea {
+  margin: 10px;
+  width: 500px;
+  height: 60px;
+  border-radius: 25px;
+  padding-left: 15px;
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.form h2 {
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.actions input {
+  width: 200px;
+  height: 60px;
+  border-radius: 40px;
+  background-color: rgb(204,153,255);
+  color: white;
+  font-size: 15px;
+}
+

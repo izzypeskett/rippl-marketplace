@@ -18,18 +18,20 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = current_user.volunteers.create( volunteer_params )
     if @volunteer.save
-      redirect_to show_volunteer_path(@volunteer)
+      redirect_to listings_path
     end
   end
 
   def show
     id = params[:id]
     @volunteer = Volunteer.find(id)
+    authorize @volunteer
   end
 
   def edit
     id = params[:id]
     @volunteer = Volunteer.find(id)
+    authorize @volunteer
   end
 
   def update
@@ -43,6 +45,7 @@ class VolunteersController < ApplicationController
   def destroy
     id = params[:id]
     @volunteer = Volunteer.find(id)
+    authorize @volunteer
     @volunteer.destroy
     redirect_to :root
   end
@@ -60,9 +63,8 @@ class VolunteersController < ApplicationController
   end
 
   def set_volunteer
-    id = params[:id]
     if current_user.is_agency? == false
-      @volunteer = current_user.volunteers.find_by_id(id)
+      @volunteer = current_user.volunteers.first
     else @volunteer == nil
       redirect_to new_volunteer_path
   end
