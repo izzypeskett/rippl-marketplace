@@ -6,27 +6,42 @@
   </header>
 </div>
 
-  
+  <div class="main">
     <h2> Current waves you have made. </h2><br>
     <div class="listings" id="agency">
     <% @agency.listings.each do |listing|%>
-    <div class="agency-listing">
-      <%= listing.title %><br>
-      <%= listing.created_at %>
-      <p>Volunteers applied: </p>
-      <% if listing.volunteers.count > 0 %>
-        <%= listing.volunteers.count %>
-        <% listing.volunteers.each do |volunteer| %>
-          <%= volunteer.outcome %>
+
+      <div class="agency-listing">
+        <p id="title"><%= listing.title %><br></p>
+        <p id="subtitle"><%= listing.created_at %></p>
+        <div>
+          
+          <% if listing.volunteers.count > 0 %>
+         <p>Volunteers applied: <%= listing.volunteers.count %> </p>
+          
+          <% listing.listing_volunteers.each do |l|%>
+          <% if l.listing_outcome.result == "Applied" %>
+            <p id="notification">Volunteers are waiting your response</p>
+            <p>View Applications</p>
+            <% end %>
+          <% end %>
+
       <% end %>
-      <% end %>
-  <% end %>
+      <%= link_to 'Edit Wave', edit_listing_path(listing) %>
+      </div>
+    <% end %>
     </div>
+
     <div class="agency-listing">
       <%= link_to("Create A Wave", new_listing_path)%>
     </div>
-  
+  </div>
   <p><%=link_to('Edit Account', edit_agency_path(@agency)) %></p>
+
+    <%= link_to 'Delete Account', destroy_agency_path(@agency), method: :delete, data: { confirm: "Are you sure you want to delete your account?"} %>
+    <div>
+    </div>
+
 </div>
 
 

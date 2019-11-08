@@ -8,9 +8,9 @@ class AgencyController < ApplicationController
     @agencies = current_user.agencies.all
   end
 
-  def sign_up
-    # Grabs the session path name to direct which
+  # Grabs the session path name to direct which
     # sign up form needs to be rendered 
+  def sign_up
     session[:path] = new_agency_path
     redirect_to new_user_registration_path
   end
@@ -31,12 +31,15 @@ class AgencyController < ApplicationController
   def show
     id = params[:id]
     @agency = Agency.find(id)
+    authorize @agency
+    @listings = @agency.listings
   end
 
 
   def edit
     id = params[:id]
     @agency = Agency.find(id)
+    authorize @agency
   end
 
   def update
@@ -50,7 +53,8 @@ class AgencyController < ApplicationController
   def destroy
     id = params[:id]
     @agency = Agency.find(id)
-    @agency.destroy
+    authorize @agency
+    current_user.destroy
     redirect_to :root
   end
 

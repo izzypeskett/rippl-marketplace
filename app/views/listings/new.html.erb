@@ -42,6 +42,7 @@
       <% for skill in Skill.all %>
       <%= check_box_tag "listing[skill_ids][]", skill.id %>
      <%=h skill.name %>
+     <%= image_tag "seed/#{skill.symbol}.svg", class: "icon" %>
     <% end %>
   </div>
 

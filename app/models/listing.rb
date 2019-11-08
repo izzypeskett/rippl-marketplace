@@ -6,7 +6,7 @@ class Listing < ApplicationRecord
   has_many :skills, through: :listings_skills
   accepts_nested_attributes_for :skills
 
-  has_many :listing_volunteers
+  has_many :listing_volunteers, dependent: :destroy
   has_many :volunteers, through: :listing_volunteers
 
   validates :title, presence: true, length: { in: 10..250 }

@@ -1,6 +1,8 @@
 <h1>Hey, <%=@agency.name %></h1>
-<% if @agency.address == nil %>
-<%= link_to "Add an address", "#{edit_agency_path}#address-form" %>
+  <% if @agency.address == nil %>
+    <%= link_to "Add an address", "#{edit_agency_path}#address-form" %>
+  <% end %>
+
 <div>
 <%= form_with model: @agency, url: update_agency_path, local: true do | form | %>
 
@@ -42,7 +44,7 @@
          <div>
         <%= ff.label :state %>
         <%= ff.select :state,
-        options_for_select(Address.state, @address.state) %>
+        options_for_select(%w[ACT NSW NT QLD SA TAS VIC WA]) %>
         </div><br>
          <div>
         <%= ff.label :postcode %>
@@ -58,3 +60,5 @@
   </div>
 
   <% end %>
+
+

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+delete "/user/:id", to: "users/registrations#destroy", as: "destroy_user"
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   get "/agency/:id/edit", to: "agency#edit", as: "edit_agency"
   put "/agency/:id", to: "agency#update", as: "update_agency"
   patch "/agency/:id", to: "agency#update"
-  delete "/agency/:id", to: "agency#destroy"
+  delete "/agency/:id", to: "agency#destroy", as: "destroy_agency"
   
 
   # Volunteer routes

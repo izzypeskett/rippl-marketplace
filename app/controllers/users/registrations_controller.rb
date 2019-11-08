@@ -19,9 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     if session[:path].include? "agency"
       @user.is_agency = true
-      agency = resource.agencies.build(name: params[:user][:agency][:name], description: params[:user][:agency][:description])
-      agency.save
-      show_agency_path(agency)
     else
       @user.is_agency = false
     end
@@ -72,6 +69,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # agency is being required to be available for the routing. 
       agency = resource.agencies.build(name: params[:user][:agency][:name], description: params[:user][:agency][:description])
       agency.save
+      session[:agency] = agency.id
       show_agency_path(agency)
     else
       new_volunteer_path

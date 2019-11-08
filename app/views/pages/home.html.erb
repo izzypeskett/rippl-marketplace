@@ -12,6 +12,7 @@
   <div class="listings">
      <h2> Waves to catch</h2>
     <% @listings.each do |listing| %>
+
     <div class="listing-card">
       <div class="listing-card-left">
         <p id="title"><%= listing.title %></p>
@@ -19,6 +20,7 @@
         <p id="subtitle"><%= listing.time_frame %></p>
        <p id="subtitle"><i class="fas fa-users"> <%= listing.no_of_volunteers %></i></p>
       </div>
+      
       <div class="main-button">
         
        <%= link_to("View this wave", listing_path(listing))%>

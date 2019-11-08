@@ -6,18 +6,22 @@
 
 <div class ="listings">
 <% @listings.each do |listing| %>
+
   <div class ="listing-card">
+  
     <div class="listing-card-left">
       <p id="title"><%= listing.title %></p>
       <p id="subtitle"><%= listing.agency.name %></p>
       <p id="subtitle"><%= listing.time_frame %></p>
       <p id="subtitle"><i class="fas fa-users"> <%= listing.no_of_volunteers %></i></p>
     </div>
+
     <div class="main-button">
-    <%= link_to("View", listing_path(listing)) %>
+      <%= link_to("View", listing_path(listing)) %>
     </div>
-  <% end %>
   </div>
+  <% end %>
+ 
 </div>
 <div class="listings">
   <h1> See who's surfing! </h1>
