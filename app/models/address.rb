@@ -4,4 +4,5 @@ class Address < ApplicationRecord
 
  
   validates :postcode, length: { is: 4 }
+
 end

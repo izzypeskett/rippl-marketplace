@@ -74,3 +74,5 @@ gem "pundit", "~> 2.1"
 gem "faker", "~> 2.6"
 
 gem "social-share-button", "~> 1.2"
+
+gem "geocoder", "~> 1.5"

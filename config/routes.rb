@@ -29,7 +29,7 @@ delete "/user/:id", to: "users/registrations#destroy", as: "destroy_user"
   get "/volunteer/:id", to: "volunteers#show", as: "show_volunteer"
   put "/volunteer/:id", to: "volunteers#update"
   patch "/volunteer/:id", to: "volunteers#update"
-  delete "/volunteer/:id", to: "volunteers#destroy"
+  delete "/volunteer/:id", to: "volunteers#destroy", as: "destroy_volunteer"
   get "/volunteer/:id/edit", to: "volunteers#edit", as: "edit_volunteer"
 
   resources :listings

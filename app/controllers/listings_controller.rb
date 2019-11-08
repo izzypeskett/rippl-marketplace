@@ -31,6 +31,16 @@ class ListingsController < ApplicationController
     end
   end
 
+  def address 
+    @address = Address.all
+    @address.each do |add|
+      @location = "#{add.number} #{add.street} #{add.city} #{add.state} #{add.postcode} Australia"
+    end
+    @results = Geocoder.search(@location)
+    @lat = @results.first.coordinates[0]
+    @long = @results.first.coordinates[1]
+  end
+
   def show
     @listing = Listing.find(params[:id])
     # To allow user to apply for listing if they are a volunteer
@@ -42,6 +52,7 @@ class ListingsController < ApplicationController
         @agency = current_user.agencies.first
       end
     end
+    address
   end
 
   def edit
@@ -80,7 +91,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :time_frame, :time_required, :no_of_volunteers, :agency_id, skill_ids: [])
+    params.require(:listing).permit(:title, :description, :time_frame, :time_required, :no_of_volunteers, :agency_id, skill_ids: [], address_attributes: [ :number, :street, :city, :state, :postcode])
   end
 
   def set_user_agency

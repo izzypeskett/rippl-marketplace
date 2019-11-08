@@ -1,5 +1,5 @@
-<div class="show-listing">
 
+<div class="show-listing">
   <div class="actions">
     <% if policy(@listing).apply? %>
       <div class ="button">
@@ -30,6 +30,8 @@
       <p><%= @listing.no_of_volunteers %></p>
       <p id="subtitle">(Know of any good candidates?)</p>
       <p>Share here<%= social_share_button_tag(@listing.title) %></p>
+      <p id="heading">Location of wave:</p>
+      <p><%= @location %></p>
       <p id="subtitle">This wave was created by</p>
       <div class="agency-name">
         <%=@listing.agency.name %>

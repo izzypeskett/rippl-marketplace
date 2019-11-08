@@ -46,7 +46,7 @@ class VolunteersController < ApplicationController
     id = params[:id]
     @volunteer = Volunteer.find(id)
     authorize @volunteer
-    @volunteer.destroy
+    current_user.destroy
     redirect_to :root
   end
 

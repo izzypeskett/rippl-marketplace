@@ -14,3 +14,5 @@
   <%= lv.listing_outcome.result%>
   <% end %>
 </div>
+
+<%= link_to("Delete account", destroy_volunteer_path(@volunteer), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}) %>

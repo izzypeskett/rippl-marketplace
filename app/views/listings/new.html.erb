@@ -46,6 +46,33 @@
     <% end %>
   </div>
 
+  <div>
+    <%= form.label "Finally where will the volunteer be catching this wave?"%>
+    <p>aka the location of the volunteer opportunity</p>
+      <%= form.fields_for :address, Address.new do |ff| %>
+      <div>
+        <%= ff.label :number %>
+        <%= ff.number_field :number %>
+        </div><br>
+        <div>
+        <%= ff.label :street %>
+        <%= ff.text_field :street %>
+        </div><br>
+        <div>
+        <%= ff.label :city %>
+        <%= ff.text_field :city %>
+        </div><br>
+         <div>
+        <%= ff.label :state %>
+        <%= ff.select :state,
+        options_for_select(%w[ACT NSW NT QLD SA TAS VIC WA]) %>
+        </div><br>
+         <div>
+        <%= ff.label :postcode %>
+        <%= ff.number_field :postcode %>
+        </div><br>
+        <% end %>
+
   <p> Great! Let's Create your wave!</p>
 
   <%= form.submit %>

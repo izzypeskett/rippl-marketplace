@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :agencies, dependent: :destroy 
   accepts_nested_attributes_for :agencies
   validates_associated :agencies
-  has_many :volunteers
+  has_many :volunteers, dependent: :destroy
   accepts_nested_attributes_for :volunteers
 end

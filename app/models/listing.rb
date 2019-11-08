@@ -1,7 +1,9 @@
 class Listing < ApplicationRecord
   belongs_to :address, optional: true
-  belongs_to :agency
   accepts_nested_attributes_for :address
+  
+  belongs_to :agency
+  
   has_many :listings_skills
   has_many :skills, through: :listings_skills
   accepts_nested_attributes_for :skills

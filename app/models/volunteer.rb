@@ -6,10 +6,10 @@ class Volunteer < ApplicationRecord
   has_one_attached :resume
  
 
-  has_many :skills_volunteers
+  has_many :skills_volunteers, dependent: :destroy
   has_many :skills, through: :skills_volunteers
 
-  has_many :listing_volunteers
+  has_many :listing_volunteers, dependent: :destroy
   has_many :listings, through: :listing_volunteers
 
   validates :name, presence: true, length: { minimum: 2 }, format: { with: /\A[a-zA-z]+\z/, message: "please only use letters" }
