@@ -36,9 +36,9 @@ class ListingsController < ApplicationController
     @address.each do |add|
       @location = "#{add.number} #{add.street} #{add.city} #{add.state} #{add.postcode} Australia"
     end
-    @results = Geocoder.search(@location)
-    @lat = @results.first.coordinates[0]
-    @long = @results.first.coordinates[1]
+    # @results = Geocoder.search(@location)
+    # @lat = @results.first.coordinates[0]
+    # @long = @results.first.coordinates[1]
   end
 
   def show
@@ -62,6 +62,7 @@ class ListingsController < ApplicationController
 # Method that connects volunteer to a listing through a join table
 # By clicking the link_to in the views/listing/show
   def apply
+    byebug
     id = params[:id]
     @listing = Listing.find_by_id(id)
     authorize @listing

@@ -23,6 +23,7 @@ class ListingPolicy < ApplicationPolicy
 
  
 
+
   def create?
     user.is_agency? == true
   end

@@ -6,23 +6,25 @@
   height: 300px;
 }
 
-#agency.listings {
+.main-box {
   width: calc(100vw - 100px);
   height: 500px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: flex-start;
+  h2 {
+    font-weight: lighter;
+    font-stretch: wider;
+  }
 }
 
-#agency.listings h2 {
-  font-weight: lighter;
-  font-stretch: wider;
-}
+
 
 .agency-listing {
   border-radius: 25px;
-  height: 150px;
+  height: 200px;
   width: 350px;
   padding: 10px;
   margin-right: 10px;

@@ -13,12 +13,12 @@ require 'faker'
 #   Skill.create(name: Faker::Job.key_skill)
 # end
 
-# ListingOutcome.create(result:"Approved")
-# ListingOutcome.create(result:"Denied")
-# ListingOutcome.create(result:"Applied")
-# ListingOutcome.create(result:"Being Assessed")
+ListingOutcome.create(result:"Approved")
+ListingOutcome.create(result:"Denied")
+ListingOutcome.create(result:"Applied")
+ListingOutcome.create(result:"Being Assessed")
 
-Skill.create(name: "Driver", description: "Has current Australian drivers license", symbol: 'car')
+# Skill.create(name: "Driver", description: "Has current Australian drivers license", symbol: 'car')
 # Skill.create(name: "Working with childrens check", description: "Has current working with childrens check", symbol: )
 # Skill.create(name: "Computer skills", description: "Has adequate computer knowledge", symbol: )
 # Skill.create(name: "Food handling", description: "Has experiencing working with food", symbol: )

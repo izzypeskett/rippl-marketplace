@@ -1,0 +1,8 @@
+<%= @listing.title %>
+<% @listing.listing_volunteers.each do |applicant| %>
+  <%= applicant.volunteer.name %>
+  <%= applicant.volunteer.age %>
+  <%= applicant.volunteer.gender %>
+  <%= applicant.listing_outcome.result %>
+  <%= link_to "Resume", rails_blob_path(applicant.volunteer.resume, disposition: "attachment") %>
+  <% end %>

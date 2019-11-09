@@ -35,6 +35,8 @@ delete "/user/:id", to: "users/registrations#destroy", as: "destroy_user"
   resources :listings
 
   get "/listings/:id/apply", to: "listings#apply", as: "apply_listing"
+
+  get "/listing/:id/applicants", to: "listingvolunteers#index", as: "listing_applicant"
   
 
 end

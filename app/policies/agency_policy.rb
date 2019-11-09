@@ -3,6 +3,10 @@ class AgencyPolicy < ApplicationPolicy
     record.user_id == user.id
   end
 
+  def index?
+    @agency.id == @listing.agency.id
+  end
+
   def show?
     owned?
   end
