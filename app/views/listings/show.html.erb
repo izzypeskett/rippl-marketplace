@@ -4,7 +4,7 @@
       <p id="tweet">Tweet this wave</p>
       <%= social_share_button_tag(@listing.title)%>
     <% if policy(@listing).apply? %>
-      <% if @listing.listing_volunteers.where(volunteer_id:current_user.volunteers.first.id)%>
+      <% if @listing.volunteers.where(id: current_user.volunteers.first.id).count > 0 %>
       <p> You have already applied for this!</p>
       <% else %>
       <div class ="button">

@@ -3,8 +3,6 @@ class VolunteersController < ApplicationController
   before_action :is_user_volunteer, except: [:sign_up]
   before_action :set_volunteer, only: [:edit, :update, :show, :destroy]
 
-  def index
-  end
 
   def sign_up
     session[:path] = new_volunteer_path

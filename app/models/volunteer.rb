@@ -13,6 +13,6 @@ class Volunteer < ApplicationRecord
   has_many :listing_volunteers, dependent: :destroy
   has_many :listings, through: :listing_volunteers
 
-  # validates :name, presence: true, length: { minimum: 2 }, format: { with: /\A[a-zA-z]+\z/, message: "please only use letters" }
+  validates :name, presence: true
   validates :age, presence: true, numericality: { greater_than: 15, message: "You must be 16 years or above to volunteer" }
 end
