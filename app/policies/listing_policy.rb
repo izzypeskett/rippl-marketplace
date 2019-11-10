@@ -1,18 +1,10 @@
 class ListingPolicy < ApplicationPolicy
 
-  class Scope < Scope
-    def resolve
-      if user.is_agency? == true || user.owner_of?(record)
-        scope.all
-      else
-        scope.where(published: true)
-      end
-    end
-  end
 
   def owned?
+    byebug
       if user.is_agency? == true
-      record.agency_id == agency.id
+      record.agency_id == user.agencies.first.id
       else
       end
   end
@@ -26,7 +18,7 @@ class ListingPolicy < ApplicationPolicy
   end
 
   def edit?
-    if user.is_agency? == true || owned?
+    if owned?
     else
       redirect_to :root 
     end

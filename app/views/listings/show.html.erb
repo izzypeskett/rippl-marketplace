@@ -14,8 +14,10 @@
     <% end %>
     <% if current_user.is_agency? == true %>
       <% if policy(@listing).edit? %>
-        <div class = "button">
-        <%= link_to "Edit Wave", edit_listing_path %>
+      <p>Hello world</p>
+        <div class= "button">
+        <%=link_to "Edit Wave", edit_listing_path %>
+        <%=link_to "Remove Wave", listing_path(@listing), method: :delete, data:  {confirm: "Are you sure you want to delete this wave?"}%>
         </div>
      <% end %>
     <% end %>
