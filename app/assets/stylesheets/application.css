@@ -45,6 +45,7 @@ nav .login {
 
 .login ul li {
   display: inline-block;
+  margin-right: 20px;
 }
 
 nav h1 {

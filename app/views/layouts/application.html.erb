@@ -23,6 +23,7 @@
         <% else %>
           <% if current_user.volunteers.count > 0 %>
           <li><p>Hi <%=@volunteer.name%><p></li>
+          <li><%=link_to('Profile', show_volunteer_path(@volunteer))%></li>
             <% end %>
         <% end %>
         <li><%=link_to('Logout', destroy_user_session_path, method: :delete) %></li>

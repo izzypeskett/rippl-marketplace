@@ -18,7 +18,7 @@
 }
 
 .show-listing {
-  height: 100vh;
+  height: 150vh;
   width: calc(100vw - 100px);
   padding: 50px;
   display: grid;
@@ -44,19 +44,26 @@
     letter-spacing: 2px;
   }
 
+
   #heading {
     background-color: #ffe2d3;
     padding: 5px;
-    width: 200px;
+    width: 300px;
     border-radius: 25px;
   }
 
   .social-share-button {
     .ssb-icon {
-      background-size: 24px;
-      height: 24px;
-      width: 24px;
+      background-size: 40px;
+      height: 40px;
+      width: 40px;
+      margin-top: 5px;
+      
     }
+  }
+
+  #tweet {
+    border-bottom: 5px solid #ffe2d3;
   }
 
   #subtitle {
@@ -69,11 +76,12 @@
   }
 
   .actions {
-    grid-row: 1;
+    grid-row: 0;
     grid-column: 1;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     padding-top: 80px;
 
     .button {
@@ -93,4 +101,19 @@
   width: 24px;
   height: 24px;
   fill: orange;
+}
+
+.listing-information {
+  #heading {
+    width: 300px;
+    letter-spacing: 2px;
+  }
+
+  p#heading {
+    color: black;
+  }
+
+  p {
+    color: gray;
+  }
 }

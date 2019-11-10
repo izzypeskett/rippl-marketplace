@@ -4,7 +4,9 @@ class AgencyPolicy < ApplicationPolicy
   end
 
   def index?
-    @agency.id == @listing.agency.id
+    if record.listings.find(params[:id]) == nil
+      redirect_to :root
+    end
   end
 
   def show?

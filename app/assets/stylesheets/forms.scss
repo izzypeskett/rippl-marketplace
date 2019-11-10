@@ -1,0 +1,77 @@
+.form {
+  width: calc(100vw - 100px);
+  height: auto;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 100px;
+
+  h1 {
+    letter-spacing: 2px;
+    font-weight: lighter;
+  }
+
+  input#form {
+  width: 500px;
+  height: 40px;
+  border-radius: 40px;
+  padding-left: 10px;
+  font-size: 18px;
+  border: 1px solid #ffe2d3;
+  // box-shadow: 0px 7px 14px -2px rgba(138,160,173,0.38);
+  }
+
+  input#age {
+    border-radius: 40px;
+    padding-left: 10px;
+    font-size: 18px;
+    border: 1px solid #ffe2d3;
+    width: 100px;
+    height: 40px;
+    // box-shadow: 0px 7px 14px -2px rgba(138,160,173,0.38);
+  }
+
+  select {
+    width: 200px;
+    height: 40px;
+    border-radius: 40px;
+    font-size: 16px;
+    background-color: white;
+    box-sizing: none;
+    border: 1px solid #ffe2d3;
+    font-family: inherit;
+    color: gray;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    letter-spacing: 2px;
+    font-weight: lighter;
+  }
+
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+
+  .icon {
+    filter: invert(84%) sepia(11%) saturate(718%) hue-rotate(324deg) brightness(106%) contrast(106%);
+  }
+
+}
+
+#heading {
+  border-bottom: 5px solid #ffe2d3;
+  padding: 5px;
+  width: 400px;
+}
+
+#subtitle {
+  font-size: 14px;
+    color: grey;
+}

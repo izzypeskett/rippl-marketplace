@@ -1,10 +1,13 @@
 
 <div class="show-listing">
   <div class="actions">
+      <p id="tweet">Tweet this wave</p>
+      <%= social_share_button_tag(@listing.title)%>
     <% if policy(@listing).apply? %>
       <div class ="button">
       <%= link_to "Apply", apply_listing_path %>
       </div>
+      
     <% end %>
     <% if current_user.is_agency? == true %>
       <% if policy(@listing).edit? %>
@@ -25,11 +28,15 @@
       <p><%= @listing.time_required %></p>
       <p id="heading">Skills to have:<p>
       <p id="subtitle">Although not essential</p>
-      <p><%= @listing.skills.name %></p>
+        <% @listing.skills.each do |skill| %>
+        <%= image_tag "seed/#{skill.symbol}.svg", class: "icon" %>
+        <%= skill.name %>
+        <p id="subtitle"><%= skill.description %></p>
+        <% end %>
       <p id="heading"> Number of volunteers needed:</p>
       <p><%= @listing.no_of_volunteers %></p>
       <p id="subtitle">(Know of any good candidates?)</p>
-      <p>Share here<%= social_share_button_tag(@listing.title) %></p>
+      
       <p id="heading">Location of wave:</p>
       <p><%= @location %></p>
       <p id="subtitle">This wave was created by</p>

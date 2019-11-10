@@ -16,7 +16,7 @@ class VolunteersController < ApplicationController
   end
 
   def create
-    @volunteer = current_user.volunteers.create( volunteer_params )
+    @volunteer = current_user.volunteers.new( volunteer_params )
     if @volunteer.save
       redirect_to listings_path
     end
@@ -53,7 +53,7 @@ class VolunteersController < ApplicationController
   private
 
   def volunteer_params
-    params.require(:volunteer).permit(:name, :photo, :age, :gender, :resume, skill_ids: [])
+    params.require(:volunteer).permit(:name, :photo, :age, :gender, :resume, :user_id, skill_ids: [])
   end
 
   def is_user_volunteer

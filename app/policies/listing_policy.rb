@@ -21,9 +21,6 @@ class ListingPolicy < ApplicationPolicy
     user.is_agency == true
   end
 
- 
-
-
   def create?
     user.is_agency? == true
   end

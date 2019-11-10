@@ -3,13 +3,8 @@ class AgencyController < ApplicationController
   before_action :is_user_agency, except: [:sign_up]
   before_action :set_user_agency, only: [:edit, :update, :show, :destroy]
 
-  # Do I need this code?
-  def index
-    @agencies = current_user.agencies.all
-  end
-
   # Grabs the session path name to direct which
-    # sign up form needs to be rendered 
+  # sign up form needs to be rendered 
   def sign_up
     session[:path] = new_agency_path
     redirect_to new_user_registration_path
@@ -50,6 +45,7 @@ class AgencyController < ApplicationController
     end
   end
 
+  #This destroy method deletes the entire user and dependent data
   def destroy
     id = params[:id]
     @agency = Agency.find(id)
