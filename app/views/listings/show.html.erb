@@ -4,10 +4,13 @@
       <p id="tweet">Tweet this wave</p>
       <%= social_share_button_tag(@listing.title)%>
     <% if policy(@listing).apply? %>
+      <% if @listing.listing_volunteers.where(volunteer_id:current_user.volunteers.first.id)%>
+      <p> You have already applied for this!</p>
+      <% else %>
       <div class ="button">
       <%= link_to "Apply", apply_listing_path %>
       </div>
-      
+      <% end %>
     <% end %>
     <% if current_user.is_agency? == true %>
       <% if policy(@listing).edit? %>

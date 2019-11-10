@@ -17,14 +17,12 @@
         <div>
           <% if listing.volunteers.count > 0 %>
           <p>Volunteers applied: <%= listing.volunteers.count %> </p>
-            <% listing.listing_volunteers.each do |l|%>
-            <% if l.listing_outcome.result == "Applied" %>
+            <% if listing.listing_volunteers.where(listing_outcome_id: 3).count > 0 %>
               <p id="notification">Volunteers are waiting your response</p>
               <p>View Applications</p> 
               <%=link_to("View", listing_applicant_path(listing))%>
               <% end %>
             <% end %>
-          <% end %>
            </div>
           <%= link_to 'Edit Wave', edit_listing_path(listing) %>
          </div>
