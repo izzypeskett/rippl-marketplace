@@ -1,6 +1,10 @@
 // Place all the styles related to the Listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h2 {
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
 
 .head-block {
   width: calc(100vw - 100px);
@@ -16,6 +20,7 @@
 
   }
 }
+
 
 .show-listing {
   height: 150vh;
@@ -116,4 +121,12 @@
   p {
     color: gray;
   }
+}
+
+.applicants {
+  height: auto;
+  width: calc(100vw - 100px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }

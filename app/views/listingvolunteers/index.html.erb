@@ -1,8 +1,19 @@
-<%= @listing.title %>
+
+<h2><%= @listing.title %></h2>
+<div class= "applicants">
 <% @listing.listing_volunteers.each do |applicant| %>
-  <%= applicant.volunteer.name %>
-  <%= applicant.volunteer.age %>
-  <%= applicant.volunteer.gender %>
-  <%= applicant.listing_outcome.result %>
+<div class="card">
+  <%= image_tag(url_for(applicant.volunteer.photo)) %></p>
+  <p id="heading">Applicants name:</p> 
+  <p id="subtitle"><%= applicant.volunteer.name %></p>
+  <p id="heading">Applicants age:</p>
+  <p id="subtitle"><%= applicant.volunteer.age %></p>
+  <p id="heading">Applicants gender:</p>
+  <p id="subtitle"><%= applicant.volunteer.gender %></p>
+  <p id="heading">Applicants resume:</p>
   <%= link_to "Resume", rails_blob_path(applicant.volunteer.resume, disposition: "attachment") %>
+  <p id="heading"> Current status of application:</p>
+  <p id="subtitle"><%= applicant.listing_outcome.result%>
+  </div>
   <% end %>
+</div>
