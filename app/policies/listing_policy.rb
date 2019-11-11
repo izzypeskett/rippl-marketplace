@@ -2,7 +2,6 @@ class ListingPolicy < ApplicationPolicy
 
 
   def owned?
-    byebug
       if user.is_agency? == true
       record.agency_id == user.agencies.first.id
       else
