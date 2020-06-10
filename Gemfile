@@ -75,4 +75,4 @@ gem "faker", "~> 2.6"
 
 gem "social-share-button", "~> 1.2"
 
-gem "geocoder", "~> 1.5"
+gem "geocoder", "~> 1.6"
